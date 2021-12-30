@@ -1,6 +1,6 @@
-use structopt::StructOpt;
-
 mod client;
+use structopt::StructOpt;
+use client::PiHoleClient;
 
 #[derive(StructOpt, Debug)]
 struct Config {
@@ -16,5 +16,6 @@ struct Config {
 
 fn main() {
     let config = Config::from_args();
-    println!("{:#?}", config);
+    let resp = client::PiHoleRestClient { hostname: config.pihole_hostname, password: config.pihole_password }.summary_raw();
+    println!("{:#?}", resp);
 }
