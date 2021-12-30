@@ -1,8 +1,8 @@
 mod client;
-use structopt::StructOpt;
 use client::PiHoleClient;
 use std::thread;
 use std::time::Duration;
+use structopt::StructOpt;
 
 #[derive(StructOpt)]
 struct Config {
@@ -18,7 +18,10 @@ struct Config {
 
 fn main() {
     let config = Config::from_args();
-    let client = client::PiHoleRestClient { hostname: config.pihole_hostname, password: config.pihole_password };
+    let client = client::PiHoleRestClient {
+        hostname: config.pihole_hostname,
+        password: config.pihole_password,
+    };
     loop {
         println!("{:#?}", client.summary_raw());
         thread::sleep(Duration::from_secs(config.interval_seconds));
