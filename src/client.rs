@@ -1,4 +1,3 @@
-use std::collections::HashMap;
 use reqwest;
 use serde::Deserialize;
 
@@ -14,11 +13,17 @@ pub struct SummaryRaw {
     pub clients_ever_seen: i64,
     pub unique_clients: i64,
     pub dns_queries_all_types: i64,
-    pub reply_NODATA: i64,
-    pub reply_NXDOMAIN: i64,
-    pub reply_IP: i64,
     pub privacy_level: i64,
     pub status: String,
+
+    #[serde(rename(serialize = "reply_NODATA", deserialize = "reply_NODATA"))]
+    pub reply_nodata: i64,
+
+    #[serde(rename(serialize = "reply_NXDOMAIN", deserialize = "reply_NXDOMAIN"))]
+    pub reply_nxdomain: i64,
+
+    #[serde(rename(serialize = "reply_IP", deserialize = "reply_IP"))]
+    pub reply_ip: i64,
 }
 
 pub trait PiHoleClient {
