@@ -1,6 +1,8 @@
-use reqwest;
+use reqwest::blocking::Client;
+use reqwest::Error;
 use serde::Deserialize;
 use sys_info;
+use std::fmt::Display;
 
 use crate::influx::InfluxMetric;
 
@@ -29,6 +31,12 @@ pub struct SummaryRaw {
     pub reply_ip: i64,
 }
 
+impl Display for SummaryRaw {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}% requests blocked today!", self.ads_percentage_today)
+    }
+}
+
 impl InfluxMetric for SummaryRaw {
     fn influx_metric(self) -> String {
         let hostname = sys_info::hostname().unwrap();
@@ -51,7 +59,7 @@ impl InfluxMetric for SummaryRaw {
 }
 
 pub trait PiHoleClient {
-    fn summary_raw(&self) -> SummaryRaw;
+    fn summary_raw(&self) -> Result<SummaryRaw, Error>;
 }
 
 pub struct PiHoleRestClient {
@@ -62,20 +70,17 @@ pub struct PiHoleRestClient {
 }
 
 impl PiHoleClient for PiHoleRestClient {
-    fn summary_raw(&self) -> SummaryRaw {
+    fn summary_raw(&self) -> Result<SummaryRaw, Error> {
         let protocol = if self.https { "https" } else { "http" };
         let url = format!("{}://{}/admin/api.php?summaryRaw", protocol, self.hostname);
-        let mut client_builder = reqwest::blocking::Client::builder();
+        let mut client_builder = Client::builder();
         if self.insecure {
             client_builder = client_builder.danger_accept_invalid_certs(true);
         }
         let client = client_builder.build().unwrap();
-        let resp = client.get(url)
+        return client.get(url)
             .send()
             .unwrap()
-            .json::<SummaryRaw>()
-            .unwrap();
-
-        return resp;
+            .json::<SummaryRaw>();
     }
 }

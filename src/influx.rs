@@ -1,4 +1,5 @@
-use reqwest;
+use reqwest::Error;
+use reqwest::blocking::{Client, Response};
 
 pub trait InfluxMetric {
     fn influx_metric(self) -> String;
@@ -13,22 +14,19 @@ pub struct InfluxClient {
 }
 
 impl InfluxClient {
-    pub fn write<T: InfluxMetric>(&self, bucket: String, metric: T) {
+    pub fn write<T: InfluxMetric>(&self, bucket: String, metric: T) -> Result<Response, Error> {
         let protocol = if self.https { "https" } else { "http" };
         let url = format!("{}://{}/api/v2/write?bucket={}&orgID={}", protocol, self.hostname, bucket, self.org_id);
-        let mut client_builder = reqwest::blocking::Client::builder();
+        let mut client_builder = Client::builder();
         if self.insecure {
             client_builder = client_builder.danger_accept_invalid_certs(true);
         }
         let mut headers = reqwest::header::HeaderMap::new();
         headers.insert("Authorization", format!("Token {}", self.token).parse().unwrap());
         let client = client_builder.build().unwrap();
-        let res = client.post(url)
+        return client.post(url)
             .headers(headers)
             .body(metric.influx_metric())
             .send()
-            .unwrap()
-            .text();
-        println!("{:?}", res);
     }
 }
