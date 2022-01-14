@@ -1,0 +1,1035 @@
+{
+    "meta": {
+        "version": "1",
+        "type": "dashboard",
+        "name": "PiHole-Template",
+        "description": "template created from dashboard: PiHole"
+    },
+    "content": {
+        "data": {
+            "type": "dashboard",
+            "attributes": {
+                "name": "PiHole",
+                "description": "Vital PiHole Metrics"
+            },
+            "relationships": {
+                "label": {
+                    "data": [
+                        {
+                            "type": "label",
+                            "id": "08955ce591c26000"
+                        },
+                        {
+                            "type": "label",
+                            "id": "08c230d70dc94000"
+                        }
+                    ]
+                },
+                "cell": {
+                    "data": [
+                        {
+                            "type": "cell",
+                            "id": "08c22d2c023c3000"
+                        },
+                        {
+                            "type": "cell",
+                            "id": "08c22d9cbafc3000"
+                        },
+                        {
+                            "type": "cell",
+                            "id": "08c22e256b3c3000"
+                        },
+                        {
+                            "type": "cell",
+                            "id": "08c22f0d35bc3000"
+                        },
+                        {
+                            "type": "cell",
+                            "id": "08c22f8eb53c3000"
+                        },
+                        {
+                            "type": "cell",
+                            "id": "08c22fae733c3000"
+                        },
+                        {
+                            "type": "cell",
+                            "id": "08c23038d0fc3000"
+                        },
+                        {
+                            "type": "cell",
+                            "id": "08c2305b353c3000"
+                        }
+                    ]
+                },
+                "variable": {
+                    "data": [
+                        {
+                            "type": "variable",
+                            "id": "089419e41c356000"
+                        }
+                    ]
+                }
+            }
+        },
+        "included": [
+            {
+                "type": "label",
+                "id": "08955ce591c26000",
+                "attributes": {
+                    "name": "raspberry-pi",
+                    "properties": {
+                        "color": "#E30B5D",
+                        "description": ""
+                    }
+                }
+            },
+            {
+                "type": "label",
+                "id": "08c230d70dc94000",
+                "attributes": {
+                    "name": "pihole",
+                    "properties": {
+                        "color": "#066fc5",
+                        "description": ""
+                    }
+                }
+            },
+            {
+                "type": "label",
+                "id": "08955ce592426000",
+                "attributes": {
+                    "name": "Linux System Template",
+                    "properties": {
+                        "color": "#7A65F2",
+                        "description": ""
+                    }
+                }
+            },
+            {
+                "id": "08c22d2c023c3000",
+                "type": "cell",
+                "attributes": {
+                    "x": 0,
+                    "y": 0,
+                    "w": 4,
+                    "h": 3
+                },
+                "relationships": {
+                    "view": {
+                        "data": {
+                            "type": "view",
+                            "id": "08c22d2c023c3000"
+                        }
+                    }
+                }
+            },
+            {
+                "id": "08c22d9cbafc3000",
+                "type": "cell",
+                "attributes": {
+                    "x": 8,
+                    "y": 0,
+                    "w": 4,
+                    "h": 3
+                },
+                "relationships": {
+                    "view": {
+                        "data": {
+                            "type": "view",
+                            "id": "08c22d9cbafc3000"
+                        }
+                    }
+                }
+            },
+            {
+                "id": "08c22e256b3c3000",
+                "type": "cell",
+                "attributes": {
+                    "x": 4,
+                    "y": 0,
+                    "w": 4,
+                    "h": 3
+                },
+                "relationships": {
+                    "view": {
+                        "data": {
+                            "type": "view",
+                            "id": "08c22e256b3c3000"
+                        }
+                    }
+                }
+            },
+            {
+                "id": "08c22f0d35bc3000",
+                "type": "cell",
+                "attributes": {
+                    "x": 0,
+                    "y": 3,
+                    "w": 4,
+                    "h": 3
+                },
+                "relationships": {
+                    "view": {
+                        "data": {
+                            "type": "view",
+                            "id": "08c22f0d35bc3000"
+                        }
+                    }
+                }
+            },
+            {
+                "id": "08c22f8eb53c3000",
+                "type": "cell",
+                "attributes": {
+                    "x": 4,
+                    "y": 3,
+                    "w": 4,
+                    "h": 3
+                },
+                "relationships": {
+                    "view": {
+                        "data": {
+                            "type": "view",
+                            "id": "08c22f8eb53c3000"
+                        }
+                    }
+                }
+            },
+            {
+                "id": "08c22fae733c3000",
+                "type": "cell",
+                "attributes": {
+                    "x": 8,
+                    "y": 3,
+                    "w": 4,
+                    "h": 3
+                },
+                "relationships": {
+                    "view": {
+                        "data": {
+                            "type": "view",
+                            "id": "08c22fae733c3000"
+                        }
+                    }
+                }
+            },
+            {
+                "id": "08c23038d0fc3000",
+                "type": "cell",
+                "attributes": {
+                    "x": 0,
+                    "y": 6,
+                    "w": 4,
+                    "h": 3
+                },
+                "relationships": {
+                    "view": {
+                        "data": {
+                            "type": "view",
+                            "id": "08c23038d0fc3000"
+                        }
+                    }
+                }
+            },
+            {
+                "id": "08c2305b353c3000",
+                "type": "cell",
+                "attributes": {
+                    "x": 4,
+                    "y": 6,
+                    "w": 4,
+                    "h": 3
+                },
+                "relationships": {
+                    "view": {
+                        "data": {
+                            "type": "view",
+                            "id": "08c2305b353c3000"
+                        }
+                    }
+                }
+            },
+            {
+                "type": "view",
+                "id": "08c22d2c023c3000",
+                "attributes": {
+                    "name": "Domains Blocked Today",
+                    "properties": {
+                        "shape": "chronograf-v2",
+                        "queries": [
+                            {
+                                "text": "from(bucket: v.bucket)\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"ads_blocked_today\")\n  |> filter(fn: (r) => r[\"_field\"] == \"last\")\n  |> filter(fn: (r) => r[\"hostname\"] == \"admin-20ydcto1ww\")\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\n  |> yield(name: \"last\")",
+                                "editMode": "advanced",
+                                "name": "",
+                                "builderConfig": {
+                                    "buckets": [],
+                                    "tags": [
+                                        {
+                                            "key": "_measurement",
+                                            "values": [],
+                                            "aggregateFunctionType": "filter"
+                                        }
+                                    ],
+                                    "functions": [
+                                        {
+                                            "name": "mean"
+                                        }
+                                    ],
+                                    "aggregateWindow": {
+                                        "period": "auto",
+                                        "fillValues": false
+                                    }
+                                }
+                            }
+                        ],
+                        "axes": {
+                            "x": {
+                                "bounds": [
+                                    "",
+                                    ""
+                                ],
+                                "label": "",
+                                "prefix": "",
+                                "suffix": "",
+                                "base": "10",
+                                "scale": "linear"
+                            },
+                            "y": {
+                                "bounds": [
+                                    "",
+                                    ""
+                                ],
+                                "label": "",
+                                "prefix": "",
+                                "suffix": "",
+                                "base": "10",
+                                "scale": "linear"
+                            }
+                        },
+                        "type": "xy",
+                        "legend": {},
+                        "geom": "line",
+                        "colors": [
+                            {
+                                "id": "9bf0f866-7f27-4997-acdf-1088bfeb0553",
+                                "type": "scale",
+                                "hex": "#31C0F6",
+                                "name": "Nineteen Eighty Four",
+                                "value": 0
+                            },
+                            {
+                                "id": "fffe8020-7481-47a9-8180-6ba7eb3d34f3",
+                                "type": "scale",
+                                "hex": "#A500A5",
+                                "name": "Nineteen Eighty Four",
+                                "value": 0
+                            },
+                            {
+                                "id": "6a9f7634-191d-4123-87d4-94bbe2e944ce",
+                                "type": "scale",
+                                "hex": "#FF7E27",
+                                "name": "Nineteen Eighty Four",
+                                "value": 0
+                            }
+                        ],
+                        "note": "",
+                        "showNoteWhenEmpty": false,
+                        "xColumn": "",
+                        "generateXAxisTicks": [],
+                        "xTotalTicks": 0,
+                        "xTickStart": 0,
+                        "xTickStep": 0,
+                        "yColumn": "",
+                        "generateYAxisTicks": [],
+                        "yTotalTicks": 0,
+                        "yTickStart": 0,
+                        "yTickStep": 0,
+                        "shadeBelow": false,
+                        "position": "overlaid",
+                        "timeFormat": "",
+                        "hoverDimension": "auto",
+                        "legendColorizeRows": true,
+                        "legendOpacity": 1,
+                        "legendOrientationThreshold": 100000000
+                    }
+                }
+            },
+            {
+                "type": "view",
+                "id": "08c22d9cbafc3000",
+                "attributes": {
+                    "name": "Percentage Domains Blocked Today",
+                    "properties": {
+                        "shape": "chronograf-v2",
+                        "type": "gauge",
+                        "queries": [
+                            {
+                                "text": "from(bucket: v.bucket)\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"ads_percentage_today\")\n  |> filter(fn: (r) => r[\"_field\"] == \"last\")\n  |> filter(fn: (r) => r[\"hostname\"] == \"admin-20ydcto1ww\")\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\n  |> yield(name: \"last\")",
+                                "editMode": "advanced",
+                                "name": "",
+                                "builderConfig": {
+                                    "buckets": [],
+                                    "tags": [
+                                        {
+                                            "key": "_measurement",
+                                            "values": [],
+                                            "aggregateFunctionType": "filter"
+                                        }
+                                    ],
+                                    "functions": [
+                                        {
+                                            "name": "mean"
+                                        }
+                                    ],
+                                    "aggregateWindow": {
+                                        "period": "auto",
+                                        "fillValues": false
+                                    }
+                                }
+                            }
+                        ],
+                        "prefix": "",
+                        "tickPrefix": "",
+                        "suffix": "%",
+                        "tickSuffix": "",
+                        "colors": [
+                            {
+                                "id": "0",
+                                "type": "min",
+                                "hex": "#00C9FF",
+                                "name": "laser",
+                                "value": 0
+                            },
+                            {
+                                "id": "1",
+                                "type": "max",
+                                "hex": "#9394FF",
+                                "name": "comet",
+                                "value": 100
+                            }
+                        ],
+                        "decimalPlaces": {
+                            "isEnforced": true,
+                            "digits": 2
+                        },
+                        "note": "",
+                        "showNoteWhenEmpty": false
+                    }
+                }
+            },
+            {
+                "type": "view",
+                "id": "08c22e256b3c3000",
+                "attributes": {
+                    "name": "DNS Requests Today",
+                    "properties": {
+                        "shape": "chronograf-v2",
+                        "queries": [
+                            {
+                                "text": "from(bucket: v.bucket)\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"dns_queries_today\")\n  |> filter(fn: (r) => r[\"_field\"] == \"last\")\n  |> filter(fn: (r) => r[\"hostname\"] == \"admin-20ydcto1ww\")\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\n  |> yield(name: \"last\")",
+                                "editMode": "advanced",
+                                "name": "",
+                                "builderConfig": {
+                                    "buckets": [],
+                                    "tags": [
+                                        {
+                                            "key": "_measurement",
+                                            "values": [],
+                                            "aggregateFunctionType": "filter"
+                                        }
+                                    ],
+                                    "functions": [
+                                        {
+                                            "name": "mean"
+                                        }
+                                    ],
+                                    "aggregateWindow": {
+                                        "period": "auto",
+                                        "fillValues": false
+                                    }
+                                }
+                            }
+                        ],
+                        "axes": {
+                            "x": {
+                                "bounds": [
+                                    "",
+                                    ""
+                                ],
+                                "label": "",
+                                "prefix": "",
+                                "suffix": "",
+                                "base": "10",
+                                "scale": "linear"
+                            },
+                            "y": {
+                                "bounds": [
+                                    "",
+                                    ""
+                                ],
+                                "label": "",
+                                "prefix": "",
+                                "suffix": "",
+                                "base": "10",
+                                "scale": "linear"
+                            }
+                        },
+                        "type": "xy",
+                        "legend": {},
+                        "geom": "monotoneX",
+                        "colors": [
+                            {
+                                "id": "3264c2c2-fa43-4bbd-8902-5ad71e3596f4",
+                                "type": "scale",
+                                "hex": "#DA6FF1",
+                                "name": "Ectoplasm",
+                                "value": 0
+                            },
+                            {
+                                "id": "0f691def-dc66-4916-919e-07e3a3369840",
+                                "type": "scale",
+                                "hex": "#00717A",
+                                "name": "Ectoplasm",
+                                "value": 0
+                            },
+                            {
+                                "id": "63c36b86-4d76-4722-838a-6ffbac1c4dba",
+                                "type": "scale",
+                                "hex": "#ACFF76",
+                                "name": "Ectoplasm",
+                                "value": 0
+                            }
+                        ],
+                        "note": "",
+                        "showNoteWhenEmpty": false,
+                        "xColumn": "_time",
+                        "generateXAxisTicks": [],
+                        "xTotalTicks": 0,
+                        "xTickStart": 0,
+                        "xTickStep": 0,
+                        "yColumn": "_value",
+                        "generateYAxisTicks": [],
+                        "yTotalTicks": 0,
+                        "yTickStart": 0,
+                        "yTickStep": 0,
+                        "shadeBelow": false,
+                        "position": "overlaid",
+                        "timeFormat": "",
+                        "hoverDimension": "auto",
+                        "legendColorizeRows": true,
+                        "legendOpacity": 1,
+                        "legendOrientationThreshold": 100000000
+                    }
+                }
+            },
+            {
+                "type": "view",
+                "id": "08c22f0d35bc3000",
+                "attributes": {
+                    "name": "Blocklist Size",
+                    "properties": {
+                        "shape": "chronograf-v2",
+                        "type": "single-stat",
+                        "queries": [
+                            {
+                                "text": "from(bucket: v.bucket)\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"domains_being_blocked\")\n  |> filter(fn: (r) => r[\"_field\"] == \"last\")\n  |> filter(fn: (r) => r[\"hostname\"] == \"admin-20ydcto1ww\")\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\n  |> yield(name: \"last\")",
+                                "editMode": "advanced",
+                                "name": "",
+                                "builderConfig": {
+                                    "buckets": [],
+                                    "tags": [
+                                        {
+                                            "key": "_measurement",
+                                            "values": [],
+                                            "aggregateFunctionType": "filter"
+                                        }
+                                    ],
+                                    "functions": [
+                                        {
+                                            "name": "mean"
+                                        }
+                                    ],
+                                    "aggregateWindow": {
+                                        "period": "auto",
+                                        "fillValues": false
+                                    }
+                                }
+                            }
+                        ],
+                        "prefix": "",
+                        "tickPrefix": "",
+                        "suffix": "",
+                        "tickSuffix": "",
+                        "colors": [
+                            {
+                                "id": "base",
+                                "type": "text",
+                                "hex": "#00C9FF",
+                                "name": "laser",
+                                "value": 0
+                            }
+                        ],
+                        "decimalPlaces": {
+                            "isEnforced": true,
+                            "digits": 0
+                        },
+                        "note": "",
+                        "showNoteWhenEmpty": false
+                    }
+                }
+            },
+            {
+                "type": "view",
+                "id": "08c22f8eb53c3000",
+                "attributes": {
+                    "name": "Queries Cached",
+                    "properties": {
+                        "shape": "chronograf-v2",
+                        "queries": [
+                            {
+                                "text": "from(bucket: v.bucket)\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"queries_cached\")\n  |> filter(fn: (r) => r[\"_field\"] == \"last\")\n  |> filter(fn: (r) => r[\"hostname\"] == \"admin-20ydcto1ww\")\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\n  |> yield(name: \"last\")",
+                                "editMode": "advanced",
+                                "name": "",
+                                "builderConfig": {
+                                    "buckets": [],
+                                    "tags": [
+                                        {
+                                            "key": "_measurement",
+                                            "values": [],
+                                            "aggregateFunctionType": "filter"
+                                        }
+                                    ],
+                                    "functions": [
+                                        {
+                                            "name": "mean"
+                                        }
+                                    ],
+                                    "aggregateWindow": {
+                                        "period": "auto",
+                                        "fillValues": false
+                                    }
+                                }
+                            }
+                        ],
+                        "axes": {
+                            "x": {
+                                "bounds": [
+                                    "",
+                                    ""
+                                ],
+                                "label": "",
+                                "prefix": "",
+                                "suffix": "",
+                                "base": "10",
+                                "scale": "linear"
+                            },
+                            "y": {
+                                "bounds": [
+                                    "",
+                                    ""
+                                ],
+                                "label": "",
+                                "prefix": "",
+                                "suffix": "",
+                                "base": "10",
+                                "scale": "linear"
+                            }
+                        },
+                        "type": "xy",
+                        "legend": {},
+                        "geom": "monotoneX",
+                        "colors": [
+                            {
+                                "id": "9bf0f866-7f27-4997-acdf-1088bfeb0553",
+                                "type": "scale",
+                                "hex": "#31C0F6",
+                                "name": "Nineteen Eighty Four",
+                                "value": 0
+                            },
+                            {
+                                "id": "fffe8020-7481-47a9-8180-6ba7eb3d34f3",
+                                "type": "scale",
+                                "hex": "#A500A5",
+                                "name": "Nineteen Eighty Four",
+                                "value": 0
+                            },
+                            {
+                                "id": "6a9f7634-191d-4123-87d4-94bbe2e944ce",
+                                "type": "scale",
+                                "hex": "#FF7E27",
+                                "name": "Nineteen Eighty Four",
+                                "value": 0
+                            }
+                        ],
+                        "note": "",
+                        "showNoteWhenEmpty": false,
+                        "xColumn": "_time",
+                        "generateXAxisTicks": [],
+                        "xTotalTicks": 0,
+                        "xTickStart": 0,
+                        "xTickStep": 0,
+                        "yColumn": "_value",
+                        "generateYAxisTicks": [],
+                        "yTotalTicks": 0,
+                        "yTickStart": 0,
+                        "yTickStep": 0,
+                        "shadeBelow": false,
+                        "position": "overlaid",
+                        "timeFormat": "",
+                        "hoverDimension": "auto",
+                        "legendColorizeRows": true,
+                        "legendOpacity": 1,
+                        "legendOrientationThreshold": 100000000
+                    }
+                }
+            },
+            {
+                "type": "view",
+                "id": "08c22fae733c3000",
+                "attributes": {
+                    "name": "Queries Forwarded",
+                    "properties": {
+                        "shape": "chronograf-v2",
+                        "queries": [
+                            {
+                                "text": "from(bucket: v.bucket)\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"queries_forwarded\")\n  |> filter(fn: (r) => r[\"_field\"] == \"last\")\n  |> filter(fn: (r) => r[\"hostname\"] == \"admin-20ydcto1ww\")\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\n  |> yield(name: \"last\")",
+                                "editMode": "advanced",
+                                "name": "",
+                                "builderConfig": {
+                                    "buckets": [],
+                                    "tags": [
+                                        {
+                                            "key": "_measurement",
+                                            "values": [],
+                                            "aggregateFunctionType": "filter"
+                                        }
+                                    ],
+                                    "functions": [
+                                        {
+                                            "name": "mean"
+                                        }
+                                    ],
+                                    "aggregateWindow": {
+                                        "period": "auto",
+                                        "fillValues": false
+                                    }
+                                }
+                            }
+                        ],
+                        "axes": {
+                            "x": {
+                                "bounds": [
+                                    "",
+                                    ""
+                                ],
+                                "label": "",
+                                "prefix": "",
+                                "suffix": "",
+                                "base": "10",
+                                "scale": "linear"
+                            },
+                            "y": {
+                                "bounds": [
+                                    "",
+                                    ""
+                                ],
+                                "label": "",
+                                "prefix": "",
+                                "suffix": "",
+                                "base": "10",
+                                "scale": "linear"
+                            }
+                        },
+                        "type": "xy",
+                        "legend": {},
+                        "geom": "line",
+                        "colors": [
+                            {
+                                "id": "9bf0f866-7f27-4997-acdf-1088bfeb0553",
+                                "type": "scale",
+                                "hex": "#31C0F6",
+                                "name": "Nineteen Eighty Four",
+                                "value": 0
+                            },
+                            {
+                                "id": "fffe8020-7481-47a9-8180-6ba7eb3d34f3",
+                                "type": "scale",
+                                "hex": "#A500A5",
+                                "name": "Nineteen Eighty Four",
+                                "value": 0
+                            },
+                            {
+                                "id": "6a9f7634-191d-4123-87d4-94bbe2e944ce",
+                                "type": "scale",
+                                "hex": "#FF7E27",
+                                "name": "Nineteen Eighty Four",
+                                "value": 0
+                            }
+                        ],
+                        "note": "",
+                        "showNoteWhenEmpty": false,
+                        "xColumn": "_time",
+                        "generateXAxisTicks": [],
+                        "xTotalTicks": 0,
+                        "xTickStart": 0,
+                        "xTickStep": 0,
+                        "yColumn": "_value",
+                        "generateYAxisTicks": [],
+                        "yTotalTicks": 0,
+                        "yTickStart": 0,
+                        "yTickStep": 0,
+                        "shadeBelow": false,
+                        "position": "overlaid",
+                        "timeFormat": "",
+                        "hoverDimension": "auto",
+                        "legendColorizeRows": true,
+                        "legendOpacity": 1,
+                        "legendOrientationThreshold": 100000000
+                    }
+                }
+            },
+            {
+                "type": "view",
+                "id": "08c23038d0fc3000",
+                "attributes": {
+                    "name": "Number of Clients",
+                    "properties": {
+                        "shape": "chronograf-v2",
+                        "queries": [
+                            {
+                                "text": "from(bucket: v.bucket)\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"unique_clients\")\n  |> filter(fn: (r) => r[\"_field\"] == \"last\")\n  |> filter(fn: (r) => r[\"hostname\"] == \"admin-20ydcto1ww\")\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\n  |> yield(name: \"last\")",
+                                "editMode": "advanced",
+                                "name": "",
+                                "builderConfig": {
+                                    "buckets": [],
+                                    "tags": [
+                                        {
+                                            "key": "_measurement",
+                                            "values": [],
+                                            "aggregateFunctionType": "filter"
+                                        }
+                                    ],
+                                    "functions": [
+                                        {
+                                            "name": "mean"
+                                        }
+                                    ],
+                                    "aggregateWindow": {
+                                        "period": "auto",
+                                        "fillValues": false
+                                    }
+                                }
+                            }
+                        ],
+                        "axes": {
+                            "x": {
+                                "bounds": [
+                                    "",
+                                    ""
+                                ],
+                                "label": "",
+                                "prefix": "",
+                                "suffix": "",
+                                "base": "10",
+                                "scale": "linear"
+                            },
+                            "y": {
+                                "bounds": [
+                                    "",
+                                    ""
+                                ],
+                                "label": "Clieents",
+                                "prefix": "",
+                                "suffix": "",
+                                "base": "10",
+                                "scale": "linear"
+                            }
+                        },
+                        "type": "xy",
+                        "legend": {},
+                        "geom": "line",
+                        "colors": [
+                            {
+                                "id": "9bf0f866-7f27-4997-acdf-1088bfeb0553",
+                                "type": "scale",
+                                "hex": "#31C0F6",
+                                "name": "Nineteen Eighty Four",
+                                "value": 0
+                            },
+                            {
+                                "id": "fffe8020-7481-47a9-8180-6ba7eb3d34f3",
+                                "type": "scale",
+                                "hex": "#A500A5",
+                                "name": "Nineteen Eighty Four",
+                                "value": 0
+                            },
+                            {
+                                "id": "6a9f7634-191d-4123-87d4-94bbe2e944ce",
+                                "type": "scale",
+                                "hex": "#FF7E27",
+                                "name": "Nineteen Eighty Four",
+                                "value": 0
+                            }
+                        ],
+                        "note": "",
+                        "showNoteWhenEmpty": false,
+                        "xColumn": "_time",
+                        "generateXAxisTicks": [],
+                        "xTotalTicks": 0,
+                        "xTickStart": 0,
+                        "xTickStep": 0,
+                        "yColumn": "_value",
+                        "generateYAxisTicks": [],
+                        "yTotalTicks": 0,
+                        "yTickStart": 0,
+                        "yTickStep": 0,
+                        "shadeBelow": false,
+                        "position": "overlaid",
+                        "timeFormat": "",
+                        "hoverDimension": "auto",
+                        "legendColorizeRows": true,
+                        "legendOpacity": 1,
+                        "legendOrientationThreshold": 100000000
+                    }
+                }
+            },
+            {
+                "type": "view",
+                "id": "08c2305b353c3000",
+                "attributes": {
+                    "name": "Unique Domains",
+                    "properties": {
+                        "shape": "chronograf-v2",
+                        "queries": [
+                            {
+                                "text": "from(bucket: v.bucket)\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"unique_domains\")\n  |> filter(fn: (r) => r[\"_field\"] == \"last\")\n  |> filter(fn: (r) => r[\"hostname\"] == \"admin-20ydcto1ww\")\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\n  |> yield(name: \"last\")",
+                                "editMode": "advanced",
+                                "name": "",
+                                "builderConfig": {
+                                    "buckets": [],
+                                    "tags": [
+                                        {
+                                            "key": "_measurement",
+                                            "values": [],
+                                            "aggregateFunctionType": "filter"
+                                        }
+                                    ],
+                                    "functions": [
+                                        {
+                                            "name": "mean"
+                                        }
+                                    ],
+                                    "aggregateWindow": {
+                                        "period": "auto",
+                                        "fillValues": false
+                                    }
+                                }
+                            }
+                        ],
+                        "axes": {
+                            "x": {
+                                "bounds": [
+                                    "",
+                                    ""
+                                ],
+                                "label": "",
+                                "prefix": "",
+                                "suffix": "",
+                                "base": "10",
+                                "scale": "linear"
+                            },
+                            "y": {
+                                "bounds": [
+                                    "",
+                                    ""
+                                ],
+                                "label": "Domains",
+                                "prefix": "",
+                                "suffix": "",
+                                "base": "10",
+                                "scale": "linear"
+                            }
+                        },
+                        "type": "xy",
+                        "legend": {},
+                        "geom": "line",
+                        "colors": [
+                            {
+                                "id": "9bf0f866-7f27-4997-acdf-1088bfeb0553",
+                                "type": "scale",
+                                "hex": "#31C0F6",
+                                "name": "Nineteen Eighty Four",
+                                "value": 0
+                            },
+                            {
+                                "id": "fffe8020-7481-47a9-8180-6ba7eb3d34f3",
+                                "type": "scale",
+                                "hex": "#A500A5",
+                                "name": "Nineteen Eighty Four",
+                                "value": 0
+                            },
+                            {
+                                "id": "6a9f7634-191d-4123-87d4-94bbe2e944ce",
+                                "type": "scale",
+                                "hex": "#FF7E27",
+                                "name": "Nineteen Eighty Four",
+                                "value": 0
+                            }
+                        ],
+                        "note": "",
+                        "showNoteWhenEmpty": false,
+                        "xColumn": "_time",
+                        "generateXAxisTicks": [],
+                        "xTotalTicks": 0,
+                        "xTickStart": 0,
+                        "xTickStep": 0,
+                        "yColumn": "_value",
+                        "generateYAxisTicks": [],
+                        "yTotalTicks": 0,
+                        "yTickStart": 0,
+                        "yTickStep": 0,
+                        "shadeBelow": false,
+                        "position": "overlaid",
+                        "timeFormat": "",
+                        "hoverDimension": "auto",
+                        "legendColorizeRows": true,
+                        "legendOpacity": 1,
+                        "legendOrientationThreshold": 100000000
+                    }
+                }
+            },
+            {
+                "id": "089419e41c356000",
+                "type": "variable",
+                "attributes": {
+                    "name": "bucket",
+                    "arguments": {
+                        "type": "query",
+                        "values": {
+                            "query": "buckets()\n  |> filter(fn: (r) => r.name !~ /^_/)\n  |> rename(columns: {name: \"_value\"})\n  |> keep(columns: [\"_value\"])",
+                            "language": "flux"
+                        }
+                    },
+                    "selected": [
+                        "default"
+                    ]
+                },
+                "relationships": {
+                    "label": {
+                        "data": [
+                            {
+                                "type": "label",
+                                "id": "08955ce591c26000"
+                            },
+                            {
+                                "type": "label",
+                                "id": "08955ce592426000"
+                            }
+                        ]
+                    }
+                }
+            }
+        ]
+    },
+    "labels": []
+}
