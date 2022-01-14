@@ -1,54 +1,21 @@
-mod client;
+mod pihole;
 mod influx;
+mod config;
+mod summary;
 
-use client::PiHoleClient;
+use structopt::StructOpt;
+use pihole::PiHoleClient;
 use std::thread;
 use std::time::Duration;
-use structopt::StructOpt;
 use env_logger;
 use log::*;
-
-#[derive(StructOpt)]
-struct Config {
-    #[structopt(short = "h", long)]
-    pihole_hostname: String,
-
-    #[structopt(short, long)]
-    pihole_password: String,
-
-    #[structopt(long)]
-    pihole_https: bool,
-
-    #[structopt(long)]
-    pihole_insecure: bool,
-
-    #[structopt(short, long, default_value="30")]
-    interval_seconds: u64,
-
-    #[structopt(short = "d", long)]
-    influx_db_host: String,
-
-    #[structopt(short = "t", long)]
-    influx_db_token: String,
-
-    #[structopt(short = "b", long)]
-    influx_db_bucket: String,
-
-    #[structopt(short = "o", long)]
-    influx_db_org_id: String,
-
-    #[structopt(long)]
-    influx_https: bool,
-
-    #[structopt(long)]
-    influx_insecure: bool,
-}
+use config::Config;
 
 fn main() {
     env_logger::init();
     debug!("Starting...");
     let config = Config::from_args();
-    let client = client::PiHoleRestClient {
+    let client = pihole::PiHoleRestClient {
         hostname: config.pihole_hostname,
         password: config.pihole_password,
         https: config.pihole_https,
