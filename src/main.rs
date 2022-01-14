@@ -17,7 +17,6 @@ fn main() {
     let config = Config::from_args();
     let client = pihole::PiHoleRestClient {
         hostname: config.pihole_hostname,
-        password: config.pihole_password,
         https: config.pihole_https,
         insecure: config.pihole_insecure,
     };

@@ -8,7 +8,6 @@ pub trait PiHoleClient {
 
 pub struct PiHoleRestClient {
     pub hostname: String,
-    pub password: String,
     pub https: bool,
     pub insecure: bool,
 }
