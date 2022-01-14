@@ -1,15 +1,15 @@
-mod pihole;
-mod influx;
 mod config;
+mod influx;
+mod pihole;
 mod summary;
 
-use structopt::StructOpt;
+use config::Config;
+use env_logger;
+use log::*;
 use pihole::PiHoleClient;
 use std::thread;
 use std::time::Duration;
-use env_logger;
-use log::*;
-use config::Config;
+use structopt::StructOpt;
 
 fn main() {
     env_logger::init();
@@ -38,7 +38,10 @@ fn main() {
             continue;
         }
         let raw_summary = raw_summary_result.unwrap();
-        info!("Received summary from PiHole: {} domains blocked today", raw_summary.ads_blocked_today);
+        info!(
+            "Received summary from PiHole: {} domains blocked today",
+            raw_summary.ads_blocked_today
+        );
         debug!("Writing to InfluxDB");
         let write_result = influx_client.write(config.influx_db_bucket.clone(), raw_summary);
         if write_result.is_err() {

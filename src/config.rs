@@ -14,7 +14,7 @@ pub struct Config {
     #[structopt(long)]
     pub pihole_insecure: bool,
 
-    #[structopt(short, long, default_value="30")]
+    #[structopt(short, long, default_value = "30")]
     pub interval_seconds: u64,
 
     #[structopt(short = "d", long)]
@@ -35,5 +35,3 @@ pub struct Config {
     #[structopt(long)]
     pub influx_insecure: bool,
 }
-
-

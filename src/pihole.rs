@@ -1,6 +1,6 @@
+use crate::summary::SummaryRaw;
 use reqwest::blocking::Client;
 use reqwest::Error;
-use crate::summary::SummaryRaw;
 
 pub trait PiHoleClient {
     fn summary_raw(&self) -> Result<SummaryRaw, Error>;
@@ -22,9 +22,6 @@ impl PiHoleClient for PiHoleRestClient {
             client_builder = client_builder.danger_accept_invalid_certs(true);
         }
         let client = client_builder.build().unwrap();
-        return client.get(url)
-            .send()
-            .unwrap()
-            .json::<SummaryRaw>();
+        return client.get(url).send().unwrap().json::<SummaryRaw>();
     }
 }
