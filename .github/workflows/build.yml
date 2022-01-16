@@ -2,8 +2,6 @@ name: build
 
 on:
     push:
-        branches:
-        - ci
         tags:
         - v*
 
@@ -36,5 +34,5 @@ jobs:
             args: --release --target x86_64-unknown-linux-gnu
         - uses: actions/upload-artifact@v2
           with:
-            name: pihole-influx-agent-x86_64-unknown-linux
+            name: pihole-influx-agent-${{github.ref_name}}-x86_64-unknown-linux
             path: ./target/x86_64-unknown-linux-gnu/release/pihole-influx-agent
