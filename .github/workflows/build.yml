@@ -4,7 +4,6 @@ on:
     push:
         tags:
         - v*
-
 env:
     CARGO_TERM_COLOR: always
 
@@ -19,6 +18,16 @@ jobs:
         - uses: actions-rs/cargo@v1
           with:
             command: check
+    #create-release:
+        #runs-on: ubuntu-latest
+        #steps:
+        #- uses: actions/create-release@v1
+          #id: create_release
+          #with:
+            #draft: false
+            #prerelease: false
+            #release_name: ${{ github.ref_name }}
+            #tag_name: ${{ github.ref_name }}
 
     x86_64-unknown-linux-gnu:
         needs: [check]
@@ -32,7 +41,6 @@ jobs:
           with:
             command: build
             args: --release --target x86_64-unknown-linux-gnu
-        - uses: actions/upload-artifact@v2
+        - uses: softprops/action-gh-release@v1
           with:
-            name: pihole-influx-agent-${{github.ref_name}}-x86_64-unknown-linux
-            path: ./target/x86_64-unknown-linux-gnu/release/pihole-influx-agent
+            files: 'target/x86_64-unknown-linux-gnu/release/pihole-influx-agent'
