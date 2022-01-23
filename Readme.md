@@ -52,6 +52,6 @@ Logging can be controlled via the [`RUST_LOG` environment variable](https://rust
 #### To Do
 
 - [ ] Create Dockerfile
-- [ ] Setup releases
+- [X] Setup releases
 - [ ] Support multiple pi hole instances
 - [ ] Support configuring through a file
