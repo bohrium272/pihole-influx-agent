@@ -49,9 +49,3 @@ Logging can be controlled via the [`RUST_LOG` environment variable](https://rust
 1. Use the template.json to add a dashboard to the InfluxDB UI.
 2. Choose bucket name from the drop down.
 
-#### To Do
-
-- [ ] Create Dockerfile
-- [X] Setup releases
-- [ ] Support multiple pi hole instances
-- [ ] Support configuring through a file
