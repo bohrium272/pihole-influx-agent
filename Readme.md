@@ -9,7 +9,9 @@ Push PiHole metrics to Influx DB directly. Supports the Influx DB V2 API.
 
 ##### Build
 
-Clone the project and use `cargo build --release` to compile
+- Install using `cargo`: `cargo install pihole-influx-agent`; OR
+- Download for your architecture from the Releases page; OR
+- Clone the project and use `cargo build --release` to compile
 
 ##### Run
 
