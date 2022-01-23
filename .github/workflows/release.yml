@@ -1,0 +1,64 @@
+name: release
+
+on:
+    push:
+        tags:
+        - v*
+env:
+    CARGO_TERM_COLOR: always
+
+jobs:
+    check:
+        runs-on: ubuntu-latest
+        steps:
+        - uses: actions/checkout@v2
+        - uses: actions-rs/toolchain@v1
+          with:
+            toolchain: stable
+        - uses: actions-rs/cargo@v1
+          with:
+            command: check
+
+    release:
+        needs: [check]
+        name: ${{ matrix.job.target }} (${{ matrix.job.os }})
+        runs-on: ${{ matrix.job.os }}
+        strategy:
+          fail-fast: false
+          matrix:
+            job:
+              - { bin_name: armv7-linux, target: armv7-unknown-linux-gnueabihf , os: ubuntu-20.04, use-cross: true }
+              - { bin_name: arm-linux, target: arm-unknown-linux-gnueabihf   , os: ubuntu-20.04, use-cross: true }
+              - { bin_name: x86_64, target: x86_64-unknown-linux-gnu      , os: ubuntu-20.04                  }
+        steps:
+        - name: Checkout
+          uses: actions/checkout@v2
+        - name: Install Build Dependencies
+          shell: bash
+          run: |
+            case ${{ matrix.job.target }} in
+              armv7-unknown-linux-*) sudo apt -y update; sudo apt -y upgrade; sudo dpkg --add-architecture arm64; sudo apt install gcc-arm-linux-gnueabihf ;;
+              arm-unknown-linux-*) sudo apt -y update; sudo apt -y upgrade; sudo dpkg --add-architecture arm64; sudo apt -y install gcc-arm-linux-gnueabihf ;;
+              aarch64-unknown-linux-gnu) sudo apt -y update; sudo apt -y upgrade; sudo apt -y install gcc-aarch64-linux-gnu ;;
+            esac
+        - name: Setup Rust Toolchain
+          uses: actions-rs/toolchain@v1
+          with:
+            toolchain: stable
+            target: ${{ matrix.job.target }}
+            profile: minimal
+            override: true
+        - name: Compile
+          uses: actions-rs/cargo@v1
+          with:
+            command: build
+            use-cross: ${{ matrix.job.use-cross }}
+            args: --locked --release --target ${{ matrix.job.target }}
+        - name: Rename Binaries
+          shell: bash
+          run: |
+            mv "target/${{ matrix.job.target }}/release/pihole-influx-agent" "target/${{ matrix.job.target }}/release/pihole-influx-agent-${{ github.ref_name }}-${{ matrix.job.bin_name }}"
+        - name: Publish Release
+          uses: softprops/action-gh-release@v1
+          with:
+            files: "target/${{ matrix.job.target }}/release/pihole-influx-agent-${{ github.ref_name }}-${{ matrix.job.bin_name }}"
