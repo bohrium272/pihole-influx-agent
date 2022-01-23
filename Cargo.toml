@@ -3,6 +3,13 @@ name = "pihole-influx-agent"
 version = "0.1.0"
 edition = "2021"
 
+license = "AGPL-3.0-only"
+description = "Publish PiHole metrics to InfluxDB. Supports Influx's V2 API."
+repository = "https://github.com/bohrium272/pihole-influx-agent"
+readme = "Readme.md"
+keywords = ["pihole", "influxdb", "telemetry", "monitoring"]
+categories = ["visualization"]
+
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
