@@ -66,6 +66,10 @@
                         {
                             "type": "variable",
                             "id": "089419e41c356000"
+                        },
+                        {
+                            "type": "variable",
+                            "id": "08d1b9c3e9334000"
                         }
                     ]
                 }
@@ -258,7 +262,7 @@
                         "shape": "chronograf-v2",
                         "queries": [
                             {
-                                "text": "from(bucket: v.bucket)\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"ads_blocked_today\")\n  |> filter(fn: (r) => r[\"_field\"] == \"last\")\n  |> filter(fn: (r) => r[\"hostname\"] == \"admin-20ydcto1ww\")\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\n  |> yield(name: \"last\")",
+                                "text": "from(bucket: v.bucket)\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"ads_blocked_today\")\n  |> filter(fn: (r) => r[\"_field\"] == \"last\")\n  |> filter(fn: (r) => r[\"hostname\"] == v.hostname)\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\n  |> yield(name: \"last\")",
                                 "editMode": "advanced",
                                 "name": "",
                                 "builderConfig": {
@@ -307,7 +311,7 @@
                             }
                         },
                         "type": "xy",
-                        "legend": {},
+                        "staticLegend": {},
                         "geom": "line",
                         "colors": [
                             {
@@ -349,6 +353,7 @@
                         "timeFormat": "",
                         "hoverDimension": "auto",
                         "legendColorizeRows": true,
+                        "legendHide": false,
                         "legendOpacity": 1,
                         "legendOrientationThreshold": 100000000
                     }
@@ -364,7 +369,7 @@
                         "type": "gauge",
                         "queries": [
                             {
-                                "text": "from(bucket: v.bucket)\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"ads_percentage_today\")\n  |> filter(fn: (r) => r[\"_field\"] == \"last\")\n  |> filter(fn: (r) => r[\"hostname\"] == \"admin-20ydcto1ww\")\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\n  |> yield(name: \"last\")",
+                                "text": "from(bucket: v.bucket)\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"ads_percentage_today\")\n  |> filter(fn: (r) => r[\"_field\"] == \"last\")\n  |> filter(fn: (r) => r[\"hostname\"] == v.hostname)\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\n  |> yield(name: \"last\")",
                                 "editMode": "advanced",
                                 "name": "",
                                 "builderConfig": {
@@ -426,7 +431,7 @@
                         "shape": "chronograf-v2",
                         "queries": [
                             {
-                                "text": "from(bucket: v.bucket)\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"dns_queries_today\")\n  |> filter(fn: (r) => r[\"_field\"] == \"last\")\n  |> filter(fn: (r) => r[\"hostname\"] == \"admin-20ydcto1ww\")\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\n  |> yield(name: \"last\")",
+                                "text": "from(bucket: v.bucket)\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"dns_queries_today\")\n  |> filter(fn: (r) => r[\"_field\"] == \"last\")\n  |> filter(fn: (r) => r[\"hostname\"] == v.hostname)\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\n  |> yield(name: \"last\")",
                                 "editMode": "advanced",
                                 "name": "",
                                 "builderConfig": {
@@ -475,7 +480,7 @@
                             }
                         },
                         "type": "xy",
-                        "legend": {},
+                        "staticLegend": {},
                         "geom": "monotoneX",
                         "colors": [
                             {
@@ -502,12 +507,12 @@
                         ],
                         "note": "",
                         "showNoteWhenEmpty": false,
-                        "xColumn": "_time",
+                        "xColumn": "",
                         "generateXAxisTicks": [],
                         "xTotalTicks": 0,
                         "xTickStart": 0,
                         "xTickStep": 0,
-                        "yColumn": "_value",
+                        "yColumn": "",
                         "generateYAxisTicks": [],
                         "yTotalTicks": 0,
                         "yTickStart": 0,
@@ -517,6 +522,7 @@
                         "timeFormat": "",
                         "hoverDimension": "auto",
                         "legendColorizeRows": true,
+                        "legendHide": false,
                         "legendOpacity": 1,
                         "legendOrientationThreshold": 100000000
                     }
@@ -532,7 +538,7 @@
                         "type": "single-stat",
                         "queries": [
                             {
-                                "text": "from(bucket: v.bucket)\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"domains_being_blocked\")\n  |> filter(fn: (r) => r[\"_field\"] == \"last\")\n  |> filter(fn: (r) => r[\"hostname\"] == \"admin-20ydcto1ww\")\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\n  |> yield(name: \"last\")",
+                                "text": "from(bucket: v.bucket)\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"domains_being_blocked\")\n  |> filter(fn: (r) => r[\"_field\"] == \"last\")\n  |> filter(fn: (r) => r[\"hostname\"] == v.hostname)\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\n  |> yield(name: \"last\")",
                                 "editMode": "advanced",
                                 "name": "",
                                 "builderConfig": {
@@ -587,7 +593,7 @@
                         "shape": "chronograf-v2",
                         "queries": [
                             {
-                                "text": "from(bucket: v.bucket)\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"queries_cached\")\n  |> filter(fn: (r) => r[\"_field\"] == \"last\")\n  |> filter(fn: (r) => r[\"hostname\"] == \"admin-20ydcto1ww\")\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\n  |> yield(name: \"last\")",
+                                "text": "from(bucket: v.bucket)\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"queries_cached\")\n  |> filter(fn: (r) => r[\"_field\"] == \"last\")\n  |> filter(fn: (r) => r[\"hostname\"] == v.hostname)\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\n  |> yield(name: \"last\")",
                                 "editMode": "advanced",
                                 "name": "",
                                 "builderConfig": {
@@ -636,7 +642,7 @@
                             }
                         },
                         "type": "xy",
-                        "legend": {},
+                        "staticLegend": {},
                         "geom": "monotoneX",
                         "colors": [
                             {
@@ -678,6 +684,7 @@
                         "timeFormat": "",
                         "hoverDimension": "auto",
                         "legendColorizeRows": true,
+                        "legendHide": false,
                         "legendOpacity": 1,
                         "legendOrientationThreshold": 100000000
                     }
@@ -692,7 +699,7 @@
                         "shape": "chronograf-v2",
                         "queries": [
                             {
-                                "text": "from(bucket: v.bucket)\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"queries_forwarded\")\n  |> filter(fn: (r) => r[\"_field\"] == \"last\")\n  |> filter(fn: (r) => r[\"hostname\"] == \"admin-20ydcto1ww\")\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\n  |> yield(name: \"last\")",
+                                "text": "from(bucket: v.bucket)\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"queries_forwarded\")\n  |> filter(fn: (r) => r[\"_field\"] == \"last\")\n  |> filter(fn: (r) => r[\"hostname\"] == v.hostname)\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\n  |> yield(name: \"last\")",
                                 "editMode": "advanced",
                                 "name": "",
                                 "builderConfig": {
@@ -741,7 +748,7 @@
                             }
                         },
                         "type": "xy",
-                        "legend": {},
+                        "staticLegend": {},
                         "geom": "line",
                         "colors": [
                             {
@@ -768,12 +775,12 @@
                         ],
                         "note": "",
                         "showNoteWhenEmpty": false,
-                        "xColumn": "_time",
+                        "xColumn": "",
                         "generateXAxisTicks": [],
                         "xTotalTicks": 0,
                         "xTickStart": 0,
                         "xTickStep": 0,
-                        "yColumn": "_value",
+                        "yColumn": "",
                         "generateYAxisTicks": [],
                         "yTotalTicks": 0,
                         "yTickStart": 0,
@@ -783,6 +790,7 @@
                         "timeFormat": "",
                         "hoverDimension": "auto",
                         "legendColorizeRows": true,
+                        "legendHide": false,
                         "legendOpacity": 1,
                         "legendOrientationThreshold": 100000000
                     }
@@ -797,7 +805,7 @@
                         "shape": "chronograf-v2",
                         "queries": [
                             {
-                                "text": "from(bucket: v.bucket)\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"unique_clients\")\n  |> filter(fn: (r) => r[\"_field\"] == \"last\")\n  |> filter(fn: (r) => r[\"hostname\"] == \"admin-20ydcto1ww\")\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\n  |> yield(name: \"last\")",
+                                "text": "from(bucket: v.bucket)\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"unique_clients\")\n  |> filter(fn: (r) => r[\"_field\"] == \"last\")\n  |> filter(fn: (r) => r[\"hostname\"] == v.hostname)\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\n  |> yield(name: \"last\")",
                                 "editMode": "advanced",
                                 "name": "",
                                 "builderConfig": {
@@ -846,7 +854,7 @@
                             }
                         },
                         "type": "xy",
-                        "legend": {},
+                        "staticLegend": {},
                         "geom": "line",
                         "colors": [
                             {
@@ -873,12 +881,12 @@
                         ],
                         "note": "",
                         "showNoteWhenEmpty": false,
-                        "xColumn": "_time",
+                        "xColumn": "",
                         "generateXAxisTicks": [],
                         "xTotalTicks": 0,
                         "xTickStart": 0,
                         "xTickStep": 0,
-                        "yColumn": "_value",
+                        "yColumn": "",
                         "generateYAxisTicks": [],
                         "yTotalTicks": 0,
                         "yTickStart": 0,
@@ -888,6 +896,7 @@
                         "timeFormat": "",
                         "hoverDimension": "auto",
                         "legendColorizeRows": true,
+                        "legendHide": false,
                         "legendOpacity": 1,
                         "legendOrientationThreshold": 100000000
                     }
@@ -902,7 +911,7 @@
                         "shape": "chronograf-v2",
                         "queries": [
                             {
-                                "text": "from(bucket: v.bucket)\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"unique_domains\")\n  |> filter(fn: (r) => r[\"_field\"] == \"last\")\n  |> filter(fn: (r) => r[\"hostname\"] == \"admin-20ydcto1ww\")\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\n  |> yield(name: \"last\")",
+                                "text": "from(bucket: v.bucket)\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"unique_domains\")\n  |> filter(fn: (r) => r[\"_field\"] == \"last\")\n  |> filter(fn: (r) => r[\"hostname\"] == v.hostname)\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\n  |> yield(name: \"last\")",
                                 "editMode": "advanced",
                                 "name": "",
                                 "builderConfig": {
@@ -951,7 +960,7 @@
                             }
                         },
                         "type": "xy",
-                        "legend": {},
+                        "staticLegend": {},
                         "geom": "line",
                         "colors": [
                             {
@@ -978,12 +987,12 @@
                         ],
                         "note": "",
                         "showNoteWhenEmpty": false,
-                        "xColumn": "_time",
+                        "xColumn": "",
                         "generateXAxisTicks": [],
                         "xTotalTicks": 0,
                         "xTickStart": 0,
                         "xTickStep": 0,
-                        "yColumn": "_value",
+                        "yColumn": "",
                         "generateYAxisTicks": [],
                         "yTotalTicks": 0,
                         "yTickStart": 0,
@@ -993,6 +1002,7 @@
                         "timeFormat": "",
                         "hoverDimension": "auto",
                         "legendColorizeRows": true,
+                        "legendHide": false,
                         "legendOpacity": 1,
                         "legendOrientationThreshold": 100000000
                     }
@@ -1026,6 +1036,25 @@
                                 "id": "08955ce592426000"
                             }
                         ]
+                    }
+                }
+            },
+            {
+                "id": "08d1b9c3e9334000",
+                "type": "variable",
+                "attributes": {
+                    "name": "hostname",
+                    "arguments": {
+                        "type": "constant",
+                        "values": [
+                            "my-pi-hole"
+                        ]
+                    },
+                    "selected": null
+                },
+                "relationships": {
+                    "label": {
+                        "data": []
                     }
                 }
             }
