@@ -1,0 +1,23 @@
+[Unit]
+Description=PiHole Influx Agent
+After=network.target influxdb.service
+
+[Service]
+User=<user>
+Environment="INFLUX_DB_TOKEN=<token>
+Environment="RUST_LOG=info"
+Environment="PIHOLE_HOSTNAME=<host/ip>"
+Environment="INFLUX_DB_HOST=<host/ip>"
+Environment="INFLUX_DB_ORG_ID=<org-id>"
+Environment="INFLUX_DB_BUCKET=<bucket-name>"
+ExecStart=pihole-influx-agent # --influx-insecure --influx-https
+LimitNOFILE=10000
+TimeoutStopSec=20
+SuccessExitStatus=0 2
+NoNewPrivileges=yes
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+
+[Install]
+WantedBy=multi-user.target
