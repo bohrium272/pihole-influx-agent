@@ -8,12 +8,11 @@ use log::*;
 use pihole::PiHoleClient;
 use std::thread;
 use std::time::Duration;
-use structopt::StructOpt;
 
 fn main() {
     env_logger::init();
     debug!("Starting...");
-    let config = Config::from_args();
+    let config = Config::from_file("./config.yaml".to_string());
     let client = pihole::PiHoleRestClient {
         url: config.pihole_url,
         insecure: config.pihole_insecure,

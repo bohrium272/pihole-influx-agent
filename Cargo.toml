@@ -20,6 +20,7 @@ serde = { version = "1.0", features = ["derive"] }
 sys-info = "0.9"
 log = "0.4.14"
 env_logger = "0.8.4"
+serde_yaml = "0.8.7"
 
 [dev-dependencies]
 mockito = "0.31.0"
