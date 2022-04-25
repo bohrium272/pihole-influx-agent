@@ -21,6 +21,9 @@ sys-info = "0.9"
 log = "0.4.14"
 env_logger = "0.8.4"
 
+[dev-dependencies]
+mockito = "0.31.0"
+
 [target.arm-unknown-linux-gnueabihf]
 linker = "arm-linux-gnueabihf-gcc"
 

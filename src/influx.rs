@@ -6,19 +6,17 @@ pub trait InfluxMetric {
 }
 
 pub struct InfluxClient {
-    pub hostname: String,
+    pub url: String,
     pub token: String,
     pub org_id: String,
-    pub https: bool,
     pub insecure: bool,
 }
 
 impl InfluxClient {
     pub fn write<T: InfluxMetric>(&self, bucket: String, metric: T) -> Result<Response, Error> {
-        let protocol = if self.https { "https" } else { "http" };
         let url = format!(
-            "{}://{}/api/v2/write?bucket={}&orgID={}",
-            protocol, self.hostname, bucket, self.org_id
+            "{}/api/v2/write?bucket={}&orgID={}",
+            self.url, bucket, self.org_id
         );
         let mut client_builder = Client::builder();
         if self.insecure {
@@ -30,10 +28,44 @@ impl InfluxClient {
             format!("Token {}", self.token).parse().unwrap(),
         );
         let client = client_builder.build().unwrap();
-        return client
+        
+        client
             .post(url)
             .headers(headers)
             .body(metric.influx_metric())
-            .send();
+            .send()
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    struct TestMetric;
+
+    impl InfluxMetric for TestMetric {
+        fn influx_metric(self) -> String {
+            "test-metric".to_string()
+        }
+    }
+
+    #[test]
+    fn test_write() {
+        let client = InfluxClient{
+            url: mockito::server_url(),
+            token: "<token>".to_string(),
+            org_id: "org_id".to_string(),
+            insecure: true
+        };
+
+        let _m = mockito::mock("POST", "/write?bucket=bucket&orgID=org_id")
+            .with_status(201)
+            .with_header("Authorization", "Token <token>")
+            .with_body("metric")
+            .create();
+
+        let result = client.write::<TestMetric>("bucket".to_string(), TestMetric);
+
+        assert!(result.is_ok());
     }
 }

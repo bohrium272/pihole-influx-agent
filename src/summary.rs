@@ -1,6 +1,5 @@
 use serde::Deserialize;
 use std::fmt::Display;
-use sys_info;
 
 use crate::influx::InfluxMetric;
 

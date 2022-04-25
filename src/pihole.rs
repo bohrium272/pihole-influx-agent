@@ -21,6 +21,6 @@ impl PiHoleClient for PiHoleRestClient {
             client_builder = client_builder.danger_accept_invalid_certs(true);
         }
         let client = client_builder.build().unwrap();
-        return client.get(url).send().unwrap().json::<SummaryRaw>();
+        client.get(url).send().unwrap().json::<SummaryRaw>()
     }
 }
