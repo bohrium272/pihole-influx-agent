@@ -42,83 +42,72 @@ impl InfluxMetric for SummaryRaw {
             &format!(
                 "{},hostname={} last={}\n",
                 "domains_being_blocked", hostname, self.domains_being_blocked
-            )
-            .to_string(),
+            ),
         );
         metric.push_str(
             &format!(
                 "{},hostname={} last={}\n",
                 "dns_queries_today", hostname, self.dns_queries_today
-            )
-            .to_string(),
+            ), 
         );
         metric.push_str(
             &format!(
                 "{},hostname={} last={}\n",
                 "ads_blocked_today", hostname, self.ads_blocked_today
-            )
-            .to_string(),
+            ),
         );
         metric.push_str(
             &format!(
                 "{},hostname={} last={}\n",
                 "ads_percentage_today", hostname, self.ads_percentage_today
-            )
-            .to_string(),
+            ),
         );
         metric.push_str(
             &format!(
                 "{},hostname={} last={}\n",
                 "unique_domains", hostname, self.unique_domains
-            )
-            .to_string(),
+            ),
         );
         metric.push_str(
             &format!(
                 "{},hostname={} last={}\n",
                 "queries_forwarded", hostname, self.queries_forwarded
-            )
-            .to_string(),
+            ),
         );
         metric.push_str(
             &format!(
                 "{},hostname={} last={}\n",
                 "queries_cached", hostname, self.queries_cached
-            )
-            .to_string(),
+            ),
         );
         metric.push_str(
             &format!(
                 "{},hostname={} last={}\n",
                 "clients_ever_seen", hostname, self.clients_ever_seen
-            )
-            .to_string(),
+            ),
         );
         metric.push_str(
             &format!(
                 "{},hostname={} last={}\n",
                 "unique_clients", hostname, self.unique_clients
-            )
-            .to_string(),
+            ),
         );
         metric.push_str(
             &format!(
                 "{},hostname={} last={}\n",
                 "dns_queries_all_types", hostname, self.dns_queries_all_types
-            )
-            .to_string(),
+            ),
         );
         metric.push_str(
             &format!(
                 "{},hostname={} last={}\n",
                 "privacy_level", hostname, self.privacy_level
-            )
-            .to_string(),
+            ),
         );
         let status_bool = if self.status == "enabled" { "t" } else { "f" };
         metric.push_str(
-            &format!("{},hostname={} last={}", "status", hostname, status_bool).to_string(),
+            &format!("{},hostname={} last={}", "status", hostname, status_bool),
         );
-        return metric;
+        metric
     }
 }

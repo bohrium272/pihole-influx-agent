@@ -59,7 +59,7 @@ mod tests {
         };
 
         let _m = mockito::mock("POST", "/write?bucket=bucket&orgID=org_id")
-            .with_status(201)
+            .with_status(200)
             .with_header("Authorization", "Token <token>")
             .with_body("metric")
             .create();

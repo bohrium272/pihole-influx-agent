@@ -15,8 +15,7 @@ fn main() {
     debug!("Starting...");
     let config = Config::from_args();
     let client = pihole::PiHoleRestClient {
-        hostname: config.pihole_hostname,
-        https: config.pihole_https,
+        url: config.pihole_url,
         insecure: config.pihole_insecure,
     };
     debug!("Initialized PiHoleRestClient...");

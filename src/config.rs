@@ -2,14 +2,8 @@ use structopt::StructOpt;
 
 #[derive(StructOpt)]
 pub struct Config {
-    #[structopt(env, about = "PiHole's IP/Hostname")]
-    pub pihole_hostname: String,
-
-    #[structopt(
-        long,
-        about = "Boolean flag that determines whether the PiHole API will be called over https"
-    )]
-    pub pihole_https: bool,
+    #[structopt(env, about = "PiHole URL ({protocol}://{host})")]
+    pub pihole_url: String,
 
     #[structopt(
         long,
