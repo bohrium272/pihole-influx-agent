@@ -111,3 +111,34 @@ impl InfluxMetric for SummaryRaw {
         metric
     }
 }
+
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_influx_metric() {
+        let influx_metric = SummaryRaw {
+            domains_being_blocked: 10000,
+            dns_queries_today: 1000,
+            ads_blocked_today: 100,
+            ads_percentage_today: 10.5,
+            unique_domains: 100,
+            queries_forwarded: 900,
+            queries_cached: 450,
+            clients_ever_seen: 42,
+            unique_clients: 42,
+            dns_queries_all_types: 1000,
+            privacy_level: 1,
+            status: "OK".to_string(),
+            reply_nodata: 333,
+            reply_nxdomain: 333,
+            reply_ip: 334
+        };
+
+        let metric_string = influx_metric.influx_metric();
+
+        assert_eq!("domains_being_blocked,hostname=ranger last=10000\ndns_queries_today,hostname=ranger last=1000\nads_blocked_today,hostname=ranger last=100\nads_percentage_today,hostname=ranger last=10.5\nunique_domains,hostname=ranger last=100\nqueries_forwarded,hostname=ranger last=900\nqueries_cached,hostname=ranger last=450\nclients_ever_seen,hostname=ranger last=42\nunique_clients,hostname=ranger last=42\ndns_queries_all_types,hostname=ranger last=1000\nprivacy_level,hostname=ranger last=1\nstatus,hostname=ranger last=f".to_string(), metric_string);
+    }
+}
