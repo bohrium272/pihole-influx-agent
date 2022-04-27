@@ -34,9 +34,22 @@ impl Display for SummaryRaw {
     }
 }
 
+impl SummaryRaw {
+
+    #[cfg(not(test))]
+    fn hostname() -> String {
+        sys_info::hostname().unwrap()
+    }
+
+    #[cfg(test)]
+    fn hostname() -> String {
+        "<test-host>".to_string()
+    }
+}
+
 impl InfluxMetric for SummaryRaw {
     fn influx_metric(self) -> String {
-        let hostname = sys_info::hostname().unwrap();
+        let hostname = self::SummaryRaw::hostname(); 
         let mut metric = "".to_owned();
         metric.push_str(
             &format!(
@@ -139,6 +152,6 @@ mod tests {
 
         let metric_string = influx_metric.influx_metric();
 
-        assert_eq!("domains_being_blocked,hostname=ranger last=10000\ndns_queries_today,hostname=ranger last=1000\nads_blocked_today,hostname=ranger last=100\nads_percentage_today,hostname=ranger last=10.5\nunique_domains,hostname=ranger last=100\nqueries_forwarded,hostname=ranger last=900\nqueries_cached,hostname=ranger last=450\nclients_ever_seen,hostname=ranger last=42\nunique_clients,hostname=ranger last=42\ndns_queries_all_types,hostname=ranger last=1000\nprivacy_level,hostname=ranger last=1\nstatus,hostname=ranger last=f".to_string(), metric_string);
+        assert_eq!("domains_being_blocked,hostname=<test-host> last=10000\ndns_queries_today,hostname=<test-host> last=1000\nads_blocked_today,hostname=<test-host> last=100\nads_percentage_today,hostname=<test-host> last=10.5\nunique_domains,hostname=<test-host> last=100\nqueries_forwarded,hostname=<test-host> last=900\nqueries_cached,hostname=<test-host> last=450\nclients_ever_seen,hostname=<test-host> last=42\nunique_clients,hostname=<test-host> last=42\ndns_queries_all_types,hostname=<test-host> last=1000\nprivacy_level,hostname=<test-host> last=1\nstatus,hostname=<test-host> last=f".to_string(), metric_string);
     }
 }
