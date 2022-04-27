@@ -1,6 +1,5 @@
 use serde::Deserialize;
 use std::fmt::Display;
-use sys_info;
 
 use crate::influx::InfluxMetric;
 
@@ -35,91 +34,124 @@ impl Display for SummaryRaw {
     }
 }
 
+impl SummaryRaw {
+
+    #[cfg(not(test))]
+    fn hostname() -> String {
+        sys_info::hostname().unwrap()
+    }
+
+    #[cfg(test)]
+    fn hostname() -> String {
+        "<test-host>".to_string()
+    }
+}
+
 impl InfluxMetric for SummaryRaw {
     fn influx_metric(self) -> String {
-        let hostname = sys_info::hostname().unwrap();
+        let hostname = self::SummaryRaw::hostname(); 
         let mut metric = "".to_owned();
         metric.push_str(
             &format!(
                 "{},hostname={} last={}\n",
                 "domains_being_blocked", hostname, self.domains_being_blocked
-            )
-            .to_string(),
+            ),
         );
         metric.push_str(
             &format!(
                 "{},hostname={} last={}\n",
                 "dns_queries_today", hostname, self.dns_queries_today
-            )
-            .to_string(),
+            ), 
         );
         metric.push_str(
             &format!(
                 "{},hostname={} last={}\n",
                 "ads_blocked_today", hostname, self.ads_blocked_today
-            )
-            .to_string(),
+            ),
         );
         metric.push_str(
             &format!(
                 "{},hostname={} last={}\n",
                 "ads_percentage_today", hostname, self.ads_percentage_today
-            )
-            .to_string(),
+            ),
         );
         metric.push_str(
             &format!(
                 "{},hostname={} last={}\n",
                 "unique_domains", hostname, self.unique_domains
-            )
-            .to_string(),
+            ),
         );
         metric.push_str(
             &format!(
                 "{},hostname={} last={}\n",
                 "queries_forwarded", hostname, self.queries_forwarded
-            )
-            .to_string(),
+            ),
         );
         metric.push_str(
             &format!(
                 "{},hostname={} last={}\n",
                 "queries_cached", hostname, self.queries_cached
-            )
-            .to_string(),
+            ),
         );
         metric.push_str(
             &format!(
                 "{},hostname={} last={}\n",
                 "clients_ever_seen", hostname, self.clients_ever_seen
-            )
-            .to_string(),
+            ),
         );
         metric.push_str(
             &format!(
                 "{},hostname={} last={}\n",
                 "unique_clients", hostname, self.unique_clients
-            )
-            .to_string(),
+            ),
         );
         metric.push_str(
             &format!(
                 "{},hostname={} last={}\n",
                 "dns_queries_all_types", hostname, self.dns_queries_all_types
-            )
-            .to_string(),
+            ),
         );
         metric.push_str(
             &format!(
                 "{},hostname={} last={}\n",
                 "privacy_level", hostname, self.privacy_level
-            )
-            .to_string(),
+            ),
         );
         let status_bool = if self.status == "enabled" { "t" } else { "f" };
         metric.push_str(
-            &format!("{},hostname={} last={}", "status", hostname, status_bool).to_string(),
+            &format!("{},hostname={} last={}", "status", hostname, status_bool),
         );
-        return metric;
+        metric
+    }
+}
+
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_influx_metric() {
+        let influx_metric = SummaryRaw {
+            domains_being_blocked: 10000,
+            dns_queries_today: 1000,
+            ads_blocked_today: 100,
+            ads_percentage_today: 10.5,
+            unique_domains: 100,
+            queries_forwarded: 900,
+            queries_cached: 450,
+            clients_ever_seen: 42,
+            unique_clients: 42,
+            dns_queries_all_types: 1000,
+            privacy_level: 1,
+            status: "OK".to_string(),
+            reply_nodata: 333,
+            reply_nxdomain: 333,
+            reply_ip: 334
+        };
+
+        let metric_string = influx_metric.influx_metric();
+
+        assert_eq!("domains_being_blocked,hostname=<test-host> last=10000\ndns_queries_today,hostname=<test-host> last=1000\nads_blocked_today,hostname=<test-host> last=100\nads_percentage_today,hostname=<test-host> last=10.5\nunique_domains,hostname=<test-host> last=100\nqueries_forwarded,hostname=<test-host> last=900\nqueries_cached,hostname=<test-host> last=450\nclients_ever_seen,hostname=<test-host> last=42\nunique_clients,hostname=<test-host> last=42\ndns_queries_all_types,hostname=<test-host> last=1000\nprivacy_level,hostname=<test-host> last=1\nstatus,hostname=<test-host> last=f".to_string(), metric_string);
     }
 }

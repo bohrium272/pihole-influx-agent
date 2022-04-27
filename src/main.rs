@@ -4,7 +4,6 @@ mod pihole;
 mod summary;
 
 use config::Config;
-use env_logger;
 use log::*;
 use pihole::PiHoleClient;
 use std::thread;
@@ -16,16 +15,14 @@ fn main() {
     debug!("Starting...");
     let config = Config::from_args();
     let client = pihole::PiHoleRestClient {
-        hostname: config.pihole_hostname,
-        https: config.pihole_https,
+        url: config.pihole_url,
         insecure: config.pihole_insecure,
     };
     debug!("Initialized PiHoleRestClient...");
     let influx_client = influx::InfluxClient {
-        hostname: config.influx_db_host,
+        url: config.influx_url,
         token: config.influx_db_token,
         org_id: config.influx_db_org_id,
-        https: config.influx_https,
         insecure: config.influx_insecure,
     };
     debug!("Initialized InfluxClient...");

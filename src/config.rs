@@ -2,14 +2,8 @@ use structopt::StructOpt;
 
 #[derive(StructOpt)]
 pub struct Config {
-    #[structopt(env, about = "PiHole's IP/Hostname")]
-    pub pihole_hostname: String,
-
-    #[structopt(
-        long,
-        about = "Boolean flag that determines whether the PiHole API will be called over https"
-    )]
-    pub pihole_https: bool,
+    #[structopt(env, about = "PiHole URL ({protocol}://{host})")]
+    pub pihole_url: String,
 
     #[structopt(
         long,
@@ -25,8 +19,8 @@ pub struct Config {
     )]
     pub interval_seconds: u64,
 
-    #[structopt(env, about = "Influx DB's IP/Hostname")]
-    pub influx_db_host: String,
+    #[structopt(env, about = "Influx DB URL ({protocol}://{host})")]
+    pub influx_url: String,
 
     #[structopt(
         env,
@@ -39,12 +33,6 @@ pub struct Config {
 
     #[structopt(env, about = "The org ID to which this token belongs")]
     pub influx_db_org_id: String,
-
-    #[structopt(
-        long,
-        about = "Boolean flag that determines whether the InfluxDB API will be called over https"
-    )]
-    pub influx_https: bool,
 
     #[structopt(
         long,
