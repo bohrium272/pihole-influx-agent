@@ -8,12 +8,25 @@ use log::*;
 use pihole::PiHoleClient;
 use std::thread;
 use std::time::Duration;
-use structopt::StructOpt;
+use clap::{App, Arg};
+
+static VERSION: &str = "0.1.2";
 
 fn main() {
     env_logger::init();
     debug!("Starting...");
-    let config = Config::from_args();
+    let app = App::new("PiHole Influx Agent")
+                .version(VERSION)
+                .about("Scrape a PiHole for metrics and dump them to InfluxDB")
+                .author("bohrium272")
+                .arg(Arg::with_name("config-file")
+                     .short("c")
+                     .long("config-file")
+                     .value_name("FILE")
+                     .help("Path to YAML configuration file, defaults to ./config.yaml")
+                     .takes_value(true))
+                .get_matches();
+    let config = Config::from_file(app.value_of("config-file").unwrap_or("./config.yaml").to_string());
     let client = pihole::PiHoleRestClient {
         url: config.pihole_url,
         insecure: config.pihole_insecure,
