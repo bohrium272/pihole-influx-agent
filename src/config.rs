@@ -1,12 +1,17 @@
 use serde::{Serialize, Deserialize};
 use std::fs::File;
 use std::io::BufReader;
+use std::vec::Vec;
 
+#[derive(Serialize, Deserialize)]
+pub struct PiHoleURLConfig {
+    pub url: String,
+    pub insecure: bool,
+}
 
 #[derive(Serialize, Deserialize)]
 pub struct Config {
-    pub pihole_url: String,
-    pub pihole_insecure: bool,
+    pub piholes: Vec<PiHoleURLConfig>,
 
     pub interval_seconds: u64,
 
