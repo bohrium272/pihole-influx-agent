@@ -1,9 +1,11 @@
 ---
-pihole_hostname: "127.0.0.1"
-pihole_https: false
-pihole_insecure: false
+piholes:
+  - url: "127.0.0.1"
+    insecure: false
+  - url: "127.0.0.1"
+    insecure: false
 interval_seconds: 3
-influx_db_host: "127.0.0.1"
+influx_url: "127.0.0.1"
 influx_db_token: 'token'
 influx_db_bucket: 'bucket'
 influx_db_org_id: 'org'
